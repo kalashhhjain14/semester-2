@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #a02350;
+      color: white;
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      background-color: #5d0b30;
+      padding: 20px;
+      width: 300px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    input, select, textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      padding: 10px;
+      background-color: white;
+      color: #5d0b30;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .output {
+      margin-top: 20px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <form id="regForm">
+    <label>Name:</label>
+    <input type="text" id="name" required>
+
+    <label>Email:</label>
+    <input type="email" id="email" required>
+
+    <label>Password:</label>
+    <input type="password" id="password" required>
+
+    <label>Phone Number:</label>
+    <input type="text" id="phone" required>
+
+    <label>Gender:</label><br>
+    <input type="radio" name="gender" value="Male" required> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <input type="radio" name="gender" value="Other"> Other<br><br>
+
+    <label>Language:</label>
+    <select id="language" required>
+      <option value="">Select language</option>
+      <option>English</option>
+      <option>Spanish</option>
+      <option>French</option>
+    </select>
+
+    <label>Zip Code:</label>
+    <input type="text" id="zip" required>
+
+    <label>About:</label>
+    <textarea id="about" required></textarea>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <div class="output" id="output"></div>
+</div>
+
+<script>
+  document.getElementById("regForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const phone = document.getElementById("phone").value.trim();
+    const gender = document.querySelector('input[name="gender"]:checked');
+    const language = document.getElementById("language").value;
+    const zip = document.getElementById("zip").value.trim();
+    const about = document.getElementById("about").value.trim();
+
+    let errors = [];
+
+    if (!/^[A-Za-z]{6}$/.test(name)) {
+      errors.push("Name must be exactly 6 alphabets.");
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      errors.push("Invalid email format.");
+    }
+
+    if (password.length !== 10) {
+      errors.push("Password must be exactly 10 characters.");
+    }
+
+    if (!/^\d{10}$/.test(phone)) {
+      errors.push("Phone number must be exactly 10 digits.");
+    }
+
+    if (!gender) {
+      errors.push("Gender is required.");
+    }
+
+    if (!language) {
+      errors.push("Language is required.");
+    }
+
+    if (!/^\d{6}$/.test(zip)) {
+      errors.push("Zip code must be exactly 6 digits.");
+    }
+
+    if (about === "") {
+      errors.push("About field cannot be empty.");
+    }
+
+    const output = document.getElementById("output");
+    output.innerHTML = "";
+
+    if (errors.length > 0) {
+      output.innerHTML = "<strong>Errors:</strong><br>" + errors.join("<br>");
+    } else {
+      output.innerHTML = `
+        <h3>Registration Successful!</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Gender:</strong> ${gender.value}</p>
+        <p><strong>Language:</strong> ${language}</p>
+        <p><strong>Zip Code:</strong> ${zip}</p>
+        <p><strong>About:</strong> ${about}</p>
+      `;
+    }
+  });
+</script>
+
+</body>
+</html>

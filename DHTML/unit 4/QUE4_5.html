@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form For Sports</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        form {
+            background-color: yellow;
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        table {
+            margin: auto;
+            text-align: left;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <form onkeypress="changeBgColor()" onsubmit="return validateEmail()">
+        <h2>Registration Form For Sports</h2>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" id="n" onkeyup="toUppercase()"></td>
+            </tr>
+            <tr>
+                <td>Sur Name:</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>Date Of Birth:</td>
+                <td><input type="date"></td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>Phone:</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" id="e"></td>
+            </tr>
+            <tr>
+                <td>Zip:</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="register"></td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        // Change background color when key is pressed
+        function changeBgColor() {
+            document.body.style.backgroundColor = "#ccffcc"; // light green
+        }
+
+        // Convert name to uppercase on key release
+        function toUppercase() {
+            var x = document.getElementById("n");
+            x.value = x.value.toUpperCase();
+        }
+
+        // Email validation
+        function validateEmail() {
+            var email = document.getElementById("e").value;
+            var at = email.indexOf("@");
+            var dot = email.lastIndexOf(".");
+
+            if (at < 1 || dot < at + 2 || dot + 2 >= email.length) {
+                alert("Invalid Email");
+                return false; // prevent form submission
+            }
+
+            return true; // allow submission
+        }
+    </script>
+</body>
+</html>

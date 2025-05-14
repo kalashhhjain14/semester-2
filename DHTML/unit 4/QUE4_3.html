@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GLS University</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 30px;
+    }
+
+    /* Logo style */
+    #logo {
+      width: 300px;
+      height: 150px;
+      transition: 0.3s;
+    }
+
+    /* Hover to increase size */
+    #logo:hover {
+      width: 250px;
+      height: 200px;
+    }
+
+    /* Content style */
+    #content {
+      margin: 20px;
+      font-size: 20px;
+      color: black;
+      cursor: pointer;
+    }
+
+    /* Div to track mouse */
+    #tracker {
+      margin: 20px auto;
+      border: 2px solid #000;
+      width: 300px;
+      height: 200px;
+      background-color: #f2f2f2;
+      position: relative;
+    }
+
+    #coordinates {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to GLS University</h1>
+
+  <!-- University Logo -->
+  <img src="gls.png" id="logo" alt="GLS Logo"><br><br>
+
+  <!-- Clickable Content -->
+  <div id="content">
+    Click or release this text to change its color.
+  </div>
+
+  <!-- Mouse Tracker -->
+  <div id="tracker">
+    Move your mouse here
+  </div>
+
+  <!-- Coordinate Output -->
+  <div id="coordinates">X: 0, Y: 0</div>
+
+  <script>
+    // Change text color on mouse down and up
+    const content = document.getElementById("content");
+    content.addEventListener("mousedown", function() {
+      content.style.color = "red";
+    });
+    content.addEventListener("mouseup", function() {
+      content.style.color = "green";
+    });
+
+    // Show X and Y coordinates
+    const tracker = document.getElementById("tracker");
+    const coords = document.getElementById("coordinates");
+
+    tracker.addEventListener("mousemove", function(e) {
+      const rect = tracker.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      coords.innerText = `X: ${x}, Y: ${y}`;
+    });
+  </script>
+
+</body>
+</html>
