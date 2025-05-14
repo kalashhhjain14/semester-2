@@ -1,0 +1,44 @@
+create table userview(part_num int,description varchar(80),QOH int,recorder_point int,EOQ 
+int,unit_cost int,ven_num int,ven_name varchar(80),ven_address varchar(80),tel int);
+
+insert into 
+userview(part_num,description,QOH,recorder_point,EOQ,unit_cost,ven_num,ven_name,ven_addre
+ ss,tel)values(132,'bolt',100,50,1000,1.50,987,'ABC_CO.','654Elmst',55555498);
+
+insert into 
+userview(part_num,description,QOH,recorder_point,EOQ,unit_cost,ven_num,ven_name,ven_addre
+ ss,tel)values(143,'screw',59,10,100,1.75,987,'ABC_CO.','654Elmst',55555498); 
+
+insert into 
+userview(part_num,description,QOH,recorder_point,EOQ,unit_cost,ven_num,ven_name,ven_addre
+ ss,tel)values(760,'nut',80,20,500,2.00,742,'XYZ_CO.','510Smit',5558921); 
+
+insert into 
+userview(part_num,description,QOH,recorder_point,EOQ,unit_cost,ven_num,ven_name,ven_addre
+ ss,tel)values(982,'nail',100,50,800,1.00,987,'ABC_CO.','654Elmst',5555498); 
+
+select * from userview; 
+
+select part_num,description from userview; 
+
+select part_num,unit_cost from userview; 
+
+select * from userview where ven_num = 987; 
+
+select DISTINCT ven_num from userview; 
+
+select part_num,ven_address from userview where ven_name = 'ABC_CO.'; 
+
+SELECT * FROM userview where ven_name IN('ABC_CO.','XYZ_CO.'); 
+
+SELECT part_num,description from userview where description LIKE 'B%';
+
+SELECT part_num,description from userview where description LIKE '%T'; 
+
+SELECT part_num, description FROM userview WHERE description LIKE '_a%l'; 
+
+select part_num,QOH FROM userview where QOH>80; 
+
+select * from userview where recorder_point<20; 
+
+select * from userview where unit_cost>1.50;

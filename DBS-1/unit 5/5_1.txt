@@ -1,0 +1,157 @@
+create table employee(Emp_No varchar(10) PRIMARY KEY,First_Name varchar(20),Last_Name 
+varchar(20),Start_Date varchar(80) DEFAULT 'current_date',End_Date varchar(80),Salary int,City 
+varchar(30),JOB varchar(30),Depno int);
+
+insert into employee values("01","Jason","Martin","1996-07-25","2006-07
+25","123456","Toronto","Programmer","10"); 
+
+insert into employee values("02","Alsion","Matews","1976-03-21","1986-02
+21","2234.78","Vancouver","Tester","15"); 
+
+insert into employee values("03","James","Smith","1978-12-12","1990-03
+15","2324.78","Vancouver","Tester","20"); 
+
+insert into employee values("04","Celia","Rice","1982-10-24","1999-04
+21","3334.78","Vancouver","Manager","30"); 
+
+insert into employee values("05","Robert","Black","1984-01-15","1998-08
+08","4334.78","Vancouver","Tester","20"); 
+
+insert into employee values("06","Linda","Green","1987-07-30","1996-01-04","5334.78","New
+York","Tester","10"); 
+
+insert into employee values("07","David","Larry","1990-12-31","1998-02-21","6334.78","New
+York","Manager","15"); 
+
+insert into employee values("08","James","Cat","1996-09-17","2002-04
+15","7334.78","Vancouver","Tester","22"); 
+
+create table employee2(Depno varchar(20) PRIMARY KEY,DNAME varchar(20),DLoaction 
+varchar(20)); 
+
+insert into employee2 values("10","Clerk","Ahmedabad"); 
+
+insert into employee2 values("15","Salesman","Vadodara"); 
+
+insert into employee2 values("20","Analyst","Surat"); 
+
+insert into employee2 values("30","Electrical","Ahmedabad"); 
+
+insert into employee2 values("14","Civil","Valasad"); 
+
+insert into employee2 values("22","Mechanical","Vapi"); 
+
+insert into employee2 values("28","IT","Vapi");  
+
+insert into employee2 values("27","Chemical","Surat"); 
+
+ALTER TABLE employee ADD COLUMN manager varchar(25); 
+
+ALTER TABLE employee ADD COLUMN commission int; 
+
+select * from employee; 
+
+select first_name,last_name,job from employee where depno=20; 
+
+select * from employee where depno=30; 
+
+select first_name,last_name from employee where emp_no>5; 
+
+select first_name,last_name from employee where depno <> 10; 
+
+select count(emp_no) from employee; 
+
+select first_name,last_name,job from employee where depno in (select depno from employee2 
+where dloaction="surat"); 
+
+select first_name,last_name from employee where depno=20 and depno in (select depno from 
+employee2 where dname not in('clerk','salesman','analyst')); 
+
+select first_name,job,salary from employee order by job; 
+
+select emp_no,first_name from employee where job="manager"; 
+
+select sum(salary) from employee; 
+
+select first_name,salary from employee where 
+salary=(select min(salary) from employee); 
+
+select job,salary from employee where salary=(select min(salary) from employee where 
+job='Manager'); 
+
+select first_name,job from employee where salary>2000;  
+
+select first_name,(salary/12) as 'monthly_sal' from employee; 
+
+select job,count(emp_no) from employee group by job order by depno desc; 
+
+select * from employee where salary between 1000 and 5000 ; 
+
+select avg(salary) from employee; 
+
+select job,salary from employee where salary=(select min(salary) from employee); 
+
+select count(emp_no),count(distinct(job)) from employee; 
+
+select first_name,salary from employee where depno=10; 
+
+select depno as department_no, dname as department_name from employee2; 
+
+select min(salary) from employee; 
+
+select first_name from employee order by first_name limit 1; 
+
+select first_name,dname,dloaction from employee,employee2 where 
+employee.depno=employee2.depno; 
+
+select job from employee where depno in(10,20); 
+
+select first_name,salary from employee order by salary; 
+
+select job,min(salary) from employee where job="tester"; 
+
+select first_name,depno from employee where job="manager"; 
+
+select first_name from employee where depno=(select depno from employee2 where 
+dname="analyst"); 
+
+select first_name from employee where depno in(10,20); 
+
+select first_name from employee where first_name like "j%"; 
+
+select * from employee where last_name in ('smith','black','allen','scott','clark','king'); 
+
+select first_name from employee where salary>=2000; 
+
+select first_name from employee where first_name like "j_n%"; 
+
+SELECT department AVG(salary) AS average_salary,MIN(salary) AS minimum_salary, MAX(salary) AS 
+maximum_salary FROM employees GROUP BY department; 
+
+create view EMP as select depno,sum(salary) from em ployee group by depno; 
+
+drop view EMP; 
+
+select first_name,salary from employee order by salary; 
+
+select * from employee,department where employee.depno=department.depno; 
+
+select job,min(salary) from employee group by job; 
+
+select first_name from employee where depno in(10,20); 
+
+select first_name from employee where start_date>"1981-01-01" and depno=10; 
+
+select first_name,salary from employee order by salary; 
+
+select * from employee where depno <>10; 
+
+select first_name from employee order by first_name; 
+
+SELECT * FROM employees ORDER BY First_name ASC; 
+
+truncate table employee; 
+
+drop table employee; 
+
+update employee set salary=(salary+1000) where emp_no=01;

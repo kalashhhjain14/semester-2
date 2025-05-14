@@ -1,0 +1,24 @@
+create table student(Rollno varchar(10) primary key,Name varchar(20),City varchar(20)default 
+"Delhi",Mobileno double,Birthdate date not null);
+
+insert into student values("A01","Vivek","Delhi",9632587410,"2003-02-21"); 
+
+insert into student values("A02","Aziz","Patna",9632456213,"2005-05-20"); 
+
+insert into student values("A03","Karan","Nepal",1597358642,"2002-07-07"); 
+
+insert into student values("A04","Abhishek","Baroda",8521479630,"2006-06-14"); 
+
+insert into student values("A05","Raachit","Ahmedabad",1237894560,"2005-08-16"); 
+
+select Name from student where Birthdate<"2003-01-21" and city="Nepal";  
+
+select Name,Rollno from student where city in('Patna','Delhi','Baroda'); 
+
+update student set Mobileno=9714115911 where Rollno="A05";  
+
+select * from student; 
+
+truncate table student; 
+
+select Birthdate from student where Name like "__a__i%"; 

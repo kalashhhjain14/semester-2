@@ -1,0 +1,42 @@
+create table charity(p_id int,lastname varchar(80),firstname varchar(80),address varchar(80),city 
+varchar(80),contribution int); 
+
+insert into 
+charity(p_id,lastname,firstname,address,city,contribution)values(1,'bindra','jaspreet','5B,gomtinagar'
+ ,'lucknow',3500.50); 
+
+insert into 
+charity(p_id,lastname,firstname,address,city,contribution)values(2,'rana','monica','21A,bandra','mu
+ mbai',2768.00);
+
+insert into 
+charity(p_id,lastname,firstname,address,city,contribution)values(3,'singh','jatinder','8,punjabibagh','
+ delhi',2000.50); 
+
+insert into 
+charity(p_id,lastname,firstname,address,city,contribution)values(4,'arora','satinder','k/1,sherepunjab
+ colony','mumbai',1900.00); 
+
+insert into charity(p_id,lastname,firstname,address,city,contribution)values(5,'krishnan','vineeta','A
+75,adarshnagar',null,null); 
+
+select * from charity; 
+
+select firstname from charity; 
+
+select lastname from charity where city = 'mumbai'; 
+
+select p_id,lastname,firstname from charity; 
+
+SELECT firstname || ' ' || lastname AS full_name 
+FROM charity; 
+
+SELECT address,p_id from charity; 
+
+select city,p_id from charity;  
+
+select lastname,firstname from charity where firstname LIKE '%at%'; 
+
+select lastname from charity where lastname LIKE '%a%'; 
+
+select lastname,firstname from charity where firstname like '%a'; 

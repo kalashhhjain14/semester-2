@@ -1,0 +1,104 @@
+create table loan(ACCNO int,cust_name varchar(80),loan_amount int,instalments int,Int_rate 
+varchar(80),start_date int,interest varchar(80)); 
+
+insert into 
+loan(ACCNO,cust_name,loan_amount,instalments,Int_rate,start_date,interest)values(1,'
+R.K.Gupta',3
+ 00000,36,12.00,"2009-07-19",null); 
+
+insert into 
+loan(ACCNO,cust_name,loan_amount,instalments,Int_rate,start_date,interest)values(2,'S.P.Sharma',
+ 500000,48,10.00,"2008-03-22",null); 
+
+insert into 
+loan(ACCNO,cust_name,loan_amount,instalments,Int_rate,start_date,interest)values(3,'K.P.Jain',300
+ 000,36,'null',"2007-03-08",null); 
+
+insert into 
+loan(ACCNO,cust_name,loan_amount,instalments,Int_rate,start_date,interest)values(4,'M.P.Yadav',8
+ 00000,60,10.00,"2008-12-06",null); 
+
+insert into 
+loan(ACCNO,cust_name,loan_amount,instalments,Int_rate,start_date,interest)values(5,'S.P.Sinha',20
+ 0000,36,12.50,"2010-01-03",null); 
+
+insert into 
+loan(ACCNO,cust_name,loan_amount,instalments,Int_rate,start_date,interest)values(6,'P.Sharma',70
+ 0000,60,12.50,"2008-06-05",null); 
+
+insert into 
+loan(ACCNO,cust_name,loan_amount,instalments,Int_rate,start_date,interest)values(7,'K.S.Dhall',50
+ 0000,48,'null',"2008-03-05",null); 
+
+select * from loan; 
+
+SELECT AccNo, Cust_Name, Loan_Amount FROM Loan; 
+
+SELECT * FROM Loan WHERE Instalments <=40; 
+
+SELECT AccNo, Loan_Amount FROM Loan WHERE Start_Date 
+< '2009-04-01'; 
+
+SELECT Int_Rate FROM Loan WHERE Start_Date > '2009-04-01'; 
+
+SELECT * FROM Loan WHERE Int_Rate IS NULL; 
+
+SELECT * FROM Loan WHERE Int_Rate IS NOT NULL; 
+
+SELECT DISTINCT Loan_Amount FROM Loan; 
+
+SELECT DISTINCT Instalments FROM Loan; 
+
+SELECT * FROM Loan WHERE Start_Date > '2008-12-31' AND Instalments > 36; 
+
+SELECT Cust_Name, Loan_Amount FROM Loan WHERE Instalments <> 36; 
+
+SELECT Cust_Name, Loan_Amount FROM Loan WHERE Loan_Amount < 500000 OR Int_Rate > 12; 
+
+SELECT * FROM Loan WHERE Loan_Amount BETWEEN 400000 AND 500000; 
+
+SELECT * FROM Loan WHERE Int_Rate BETWEEN 11 AND 12; 
+
+SELECT Cust_Name, Loan_Amount FROM Loan WHERE Instalments IN (24, 36, 48); 
+
+SELECT AccNo, Cust_Name, Loan_Amount FROM Loan WHERE Cust_Name LIKE '%Sharma'; 
+
+SELECT AccNo, Cust_Name, Loan_Amount FROM Loan WHERE Cust_Name LIKE '%a'; 
+
+SELECT AccNo, Cust_Name, Loan_Amount FROM Loan WHERE Cust_Name LIKE '%a%'; 
+
+SELECT AccNo, Cust_Name, Loan_Amount FROM Loan WHERE Cust_Name NOT LIKE '%P%'; 
+
+SELECT AccNo, Cust_Name, Loan_Amount FROM Loan WHERE Cust_Name NOT LIKE '%P%'; 
+
+SELECT AccNo, Cust_Name, Loan_Amount FROM Loan WHERE Cust_Name LIKE '%a_'; 
+
+UPDATE Loan SET Int_Rate = 11.50 WHERE Int_Rate IS NULL; 
+
+SELECT * FROM loan; 
+
+UPDATE Loan SET Int_Rate = Int_Rate + 0.5 WHERE Loan_Amount > 400000; 
+
+SELECT * FROM loan; 
+
+UPDATE Loan SET Interest = (Loan_Amount * Int_Rate * Instalments) / 12 * 100; 
+
+SELECT * FROM loan; 
+
+DELETE FROM Loan WHERE Cust_Name = 'K.P. Jain'; 
+
+SELECT * FROM loan; 
+
+ALTER TABLE Loan ADD column category CHAR(1); 
+
+SELECT * FROM loan; 
+
+CREATE VIEW Loan_View AS SELECT AccNo, Cust_Name, Instalments FROM Loan; 
+
+SELECT * FROM loan; 
+
+SELECT * FROM Loan_View; 
+
+DROP VIEW Loan_View; 
+
+SELECT * FROM loan; 

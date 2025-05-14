@@ -1,0 +1,97 @@
+CREATE TABLE employee ( 
+Ecode INT PRIMARY KEY, 
+Ename VARCHAR(50) NOT NULL, 
+depcde INT, 
+Salary INT, 
+age INT, 
+joindate DATE UNIQUE, 
+dept_name_1 VARCHAR(50) 
+); 
+
+INSERT INTO employee (Ecode, Ename, depcde, Salary, age, joindate)  
+VALUES  
+(15, 'sameer_sharma',123,75000,39,'2007-04-01'), 
+(21, 'raguvindra_k',101,86000,29,'2005-11-11'), 
+(34, 'rama_gupta',119,52500,43,'2010-03-03'), 
+(46, 'c_r_menon',103,67000,38,'2004-07-12'), 
+(77, 'mohan_kumar',103,63000,55,'2000-11-25'), 
+(81, 'rajesh_kumar',119,74500,48,'2008-12-11'), 
+(89, 'sanjeev_p',101, 92600,54,'2009-01-12'), 
+(93, 'pragya_jain',123, 32000,29,'2006-08-05'); 
+
+SELECT * FROM employee; 
+
+SELECT Ecode, Ename, Salary FROM employee; 
+
+SELECT * FROM employee WHERE Salary > 60000; 
+
+SELECT Ename, Salary FROM employee WHERE Age < 35; 
+
+SELECT DISTINCT depcde FROM employee; 
+
+SELECT COUNT(*) AS total_employees FROM employee; 
+
+SELECT * FROM employee WHERE Depcde = 103 AND Salary > 65000; 
+
+SELECT * FROM employee WHERE Age > 35 OR Salary < 60000; 
+
+SELECT * FROM employee WHERE Age BETWEEN 25 AND 35; 
+
+SELECT Ename FROM employee WHERE Depcde IN (101, 103, 123); 
+
+SELECT Ename, Depcde FROM employee WHERE Ename LIKE '%Sharma'; 
+
+SELECT Ename, Depcde FROM employee WHERE Ename LIKE 'R%j%'; 
+
+SELECT Ecode, Age FROM employee WHERE Ename NOT LIKE '%j%'; 
+
+SELECT Ename, Salary FROM employee ORDER BY Ename ASC; 
+
+SELECT Ename, Age FROM employee ORDER BY Ename DESC; 
+
+UPDATE employee SET Salary = Salary * 1.1 WHERE Age > 50; 
+
+select * from employee; 
+
+DELETE FROM employee WHERE Depcde = 101; 
+
+SELECT * FROM employee; 
+
+DELETE FROM employee WHERE Ename = 'Rajesh Kumar'; 
+
+SELECT * FROM employee; 
+
+ALTER TABLE employee ADD dept_name_2 VARCHAR(50); 
+
+SELECT * FROM employee; 
+
+UPDATE employee SET dept_name_1 = 'IT' WHERE Depcde = 123; 
+
+SELECT MAX(Salary) FROM employee; 
+
+SELECT MIN(Age) FROM employee; 
+
+SELECT AVG(Salary) FROM employee; 
+
+SELECT SUM(Salary) FROM employee; 
+
+CREATE VIEW emp AS SELECT Ecode, Ename, Salary FROM employee; 
+
+SELECT * FROM emp; 
+
+DELETE FROM employee WHERE Age = 29; 
+
+UPDATE employee SET dept_name_1 = 'Sales' WHERE Depcde = 119; 
+
+ALTER TABLE employee DROP COLUMN dept_name_1; 
+
+ALTER TABLE employee DROP COLUMN dept_name_2; 
+
+ALTER TABLE employee ADD dept_name VARCHAR(50) DEFAULT 'Admin'; 
+
+INSERT INTO employee (Ecode, Ename, Salary)  
+VALUES  
+(11, 'Test Employee', 60000), 
+(12, 'Another Test', 70000); 
+
+SELECT * FROM employee;

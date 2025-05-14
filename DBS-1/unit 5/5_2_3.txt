@@ -1,0 +1,62 @@
+create table emp(Emp_id varchar(20) primary key,Emp_Name varchar(30),Emp_Address 
+varchar(60),Emp_Salary int not null,Emp_Hire_Date date); 
+
+insert into emp values("E1","Rohan Kuamr","Ahmedabad",25000,"1998-09-23"); 
+
+insert into emp values("E2","Roshnai Patel","Kolkata",15000,"1995-12-01"); 
+
+insert into emp values("E3","Vijay Thalapathy","Cheenai",24000,"1994-11-29"); 
+
+insert into emp values("E4","Muskesh Bakshy","Mumbai",9000,"1998-05-21"); 
+
+insert into emp values("E5","Mahesh Babu","Kolkata",22000,"1997-04-02"); 
+
+
+create table Dep(Dep_id varchar(20) primary key,Dep_Name varchar(30),Dep_Loaction 
+varchar(30),Dep_Head_Name varchar(30),Emp_id varchar(20)); 
+
+insert into Dep values("D111","Research","Ahmedabad","Michael","E1"); 
+
+insert into Dep values("D112","Managment","Mumbai","Rakesh","E2"); 
+
+insert into Dep  values("D113","A/C","Surat","Vishal","E3"); 
+
+insert into Dep values("D114","Testing","Kolkata","Jayesh","E4"); 
+
+insert into Dep values("D115","Programer","Cheenai","Rohil","E5"); 
+
+select dep_name from dep where emp_id=(select emp_id from emp where emp_address='mumbai' 
+and emp_salary<10000); 
+
+select emp_name from emp where emp_id = (select emp_id from dep where dep_loaction="kolkata" 
+or dep_id="D114"); 
+
+select emp_name from emp where emp_salary=(select max(emp_salary) from emp); 
+
+select emp_name from emp where emp_salary order by emp_salary desc limit 1,1; 
+
+select * from Dep union select * from emp;  
+
+select * from Dep union all select * from emp; 
+
+select * from Dep intersect select * from emp; 
+
+select * from Dep join emp; 
+
+select * from Dep cross join emp; 
+
+select * from Dep natural join emp; 
+
+select dep_loaction from dep where emp_id=(select emp_id from emp where emp_salary=(select 
+min(emp_salary)from emp)); 
+
+select emp_salary from emp where emp_id in (select emp_id from dep where 
+dep_head_name="michael" or dep_loaction like "%i%"); 
+
+select dep_name from dep where emp_id in (select emp_id from emp where emp_hire_date like 
+"1998%"); 
+
+update emp set emp_salary=emp_salary+(emp_salary*0.05) where emp_id=(select emp_id from 
+dep where dep_head_name="Roshnai patel"); 
+
+select * from emp;

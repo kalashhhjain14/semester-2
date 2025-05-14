@@ -1,0 +1,24 @@
+create table manufacturer(Mid varchar(10) primary key,Mname varchar(25),price int default 10, 
+Mfgdate date not null,Expdate date not null);
+
+insert into manufacturer values("M101","lux",550,"2009-05-05","2012-02-18"); 
+
+insert into manufacturer values("M102","lifeboy",100,"2008-07-07","2010-07-07"); 
+
+insert into manufacturer values("M103","patanjali",120,"2012-09-20","2014-05-10"); 
+
+insert into manufacturer values("M104","medimax",200,"2013-02-16","2015-03-28"); 
+
+insert into manufacturer values("M105","santoor",180,"2010-08-28","2012-02-18"); 
+
+select price from manufacturer where mname="lux" or Expdate="2012-02-18"; 
+
+select mfgdate from manufacturer where price > 500; 
+
+update manufacturer set price=price+(price*0.10) where Mid="M101"; 
+
+select * from manufacturer; 
+
+drop table manufacturer; 
+
+select price from manufacturer where mname like "%t%"; 

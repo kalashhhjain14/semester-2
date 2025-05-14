@@ -1,0 +1,43 @@
+_create table company(car_id varchar(80),car_name 
+varchar(80),car_company_name varchar(80),owner_name varchar(80),car_price int,car_manu_year 
+int); 
+
+insert into company(car_id,car_name,car_company_name,owner_name,car_price,car_manu_year) 
+values('c101','i_10','hyundai','vijay_shankar_sharma',54500,"2008-01-25"); 
+
+insert into company(car_id,car_name,car_company_name,owner_name,car_price,car_manu_year) 
+values('c102','i_20','hyundai','hinal_manav_desai',678000,"2010-06-20"); 
+
+insert into company(car_id,car_name,car_company_name,owner_name,car_price,car_manu_year) 
+values('c03','city','honda','ravi_kirit_verma',150000,"2011-11-06"); 
+
+insert into company(car_id,car_name,car_company_name,owner_name,car_price,car_manu_year) 
+values('c104','seltos','kia','vikas_jinal_seth',250000,"2020-10-25"); 
+
+insert into company(car_id,car_name,car_company_name,owner_name,car_price,car_manu_year) 
+values('c105','hector','MG','nirav_akhil_navani',350000,"2021-01-14"); 
+
+insert into company(car_id,car_name,car_company_name,owner_name,car_price,car_manu_year) 
+values('c107','G10','BMW','gaurav_manish_verma',1023000,"2019-08-16"); 
+
+insert into company(car_id,car_name,car_company_name,owner_name,car_price,car_manu_year) 
+values('c108','baleno','suzuki','girish_naman_sethi',780000,"2020-09-23"); 
+
+insert into company(car_id,car_name,car_company_name,owner_name,car_price,car_manu_year) 
+values('c109','kreta','hyundai','khushboo_sahani',160000,"2021-02-13"); 
+
+select * from company; 
+
+select car_id,car_name,car_price from company; 
+
+select owner_name from company; 
+
+select * from company where car_company_name = 'hyundai'; 
+
+select car_name from company where car_company_name = 'BMW'; 
+
+select owner_name,car_name from company where car_company_name = 'hyundai'; 
+
+select * from company where strftime('%Y',car_manu_year) = '2020'; 
+
+select car_id,car_name,car_price from company where car_price>150000;
